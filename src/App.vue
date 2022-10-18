@@ -1,6 +1,7 @@
 <template>
     <div class="nav">
         <RouterLink class="link-btn" to="/lab1">LAB 1</RouterLink>
+        <RouterLink class="link-btn" to="/lab2">LAB 2</RouterLink>
     </div>
     <div class="body">
         <RouterView/>

@@ -2,9 +2,9 @@ import {config} from "../config";
 
 async function UploadFile(file) {
     let formData = new FormData();
-    formData.append("file", file, "lab1.txt")
+    formData.append("file", file, "lab2.txt")
 
-    let response = await fetch(config.base_url + "/lab1/upload-file", {
+    let response = await fetch(config.base_url + "/lab2/upload-file", {
         method: "POST",
         body: formData,
     });
