@@ -19,7 +19,7 @@ import {RouterLink, RouterView} from 'vue-router';
     flex-direction: column;
 
     height: auto;
-    flex-grow: 0.5;
+    flex-basis: 15%;
 
     background-color: var(--surface-card);
     border: 4px var(--surface-card) solid;
