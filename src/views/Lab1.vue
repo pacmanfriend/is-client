@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {UploadFile} from "../api/lab1-api";
+import {UploadFile} from "@/api/lab1-api";
 
 export default {
     data() {

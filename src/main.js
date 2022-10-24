@@ -16,6 +16,7 @@ import Textarea from 'primevue/textarea';
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Row from "primevue/row";
+import Dropdown from 'primevue/dropdown';
 
 const app = createApp(App);
 app.component("FileUpload", FileUpload);
@@ -24,6 +25,7 @@ app.component("Textarea", Textarea);
 app.component("DataTable", DataTable);
 app.component("Column", Column);
 app.component("Row", Row);
+app.component("Dropdown", Dropdown);
 
 app.use(createPinia());
 app.use(PrimeVue);
