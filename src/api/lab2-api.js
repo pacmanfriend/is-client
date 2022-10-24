@@ -1,22 +1,17 @@
 import {config} from "@/config";
 
-async function UploadFile(file) {
-    let formData = new FormData();
-    formData.append("file", file, "lab2.txt")
-
-    let response = await fetch(config.base_url + "/lab2/upload-file", {
-        method: "POST",
-        body: formData,
+async function GetHuffmanCodes(fileName) {
+    let response = await fetch(config.base_url + "/lab2/get-huffman-codes?file_name=" + fileName, {
+        method: "GET",
     });
-
 
     let data = await response.json()
 
     return {
-        responseData: data,
-        statusCode: response.status,
+        data: data,
+        status: response.status,
     }
 }
 
 
-export {UploadFile}
+export {GetHuffmanCodes}
