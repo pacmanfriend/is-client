@@ -1,9 +1,5 @@
 <template>
     <h1>LAB 2</h1>
-    <div class="flex justify-content-start">
-        <FileUpload v-model="file" :custom-upload="true" @select="selectFile" class="m-1" mode="basic" accept=".txt"/>
-        <Button class="m-1" label="Upload" @click="upload"/>
-    </div>
     <div>
         <DataTable class="p-datatable-sm" :value="chars" responsive-layout="scroll" :paginator="true" :rows="10"
                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords}">

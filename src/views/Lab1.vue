@@ -1,8 +1,8 @@
 <template>
     <h1>LAB 1</h1>
-    <div class="flex justify-content-start">
-        <FileUpload v-model="file" :custom-upload="true" @select="selectFile" class="m-1" mode="basic" accept=".txt"/>
-        <Button class="m-1" label="Upload" @click="upload"/>
+    <div>
+        <Dropdown placeholder="Выберите файл" v-model="selectedFile" :options="files" option-label="FileName"
+                  option-value="FileName"/>
     </div>
     <div>
         <Textarea v-model="rawText" :disabled="true" :autoResize="true" rows="10" cols="50"/>
@@ -19,11 +19,13 @@
 
 <script>
 import {UploadFile} from "@/api/lab1-api";
+import {GetFiles} from "@/api/common-api";
 
 export default {
     data() {
         return {
-            file: {},
+            selectedFile: null,
+            files: [],
             rawText: "",
             formatText: "",
             chars: [],
@@ -35,21 +37,15 @@ export default {
             {field: 'symbol', header: "Symbol"},
             {field: 'code', header: 'Code'},
         ]
-    },
-    methods: {
-        upload(event) {
-            UploadFile(this.file).then(val => {
-                let res = val.responseData;
 
-                this.rawText = res.rawText;
-                this.chars = res.chars;
-                this.formatText = res.formatText;
-            });
-        },
-        selectFile(event) {
-            this.file = event.files[0];
-        }
-    }
+        GetFiles().then(val => {
+            if (val.error == null) {
+                this.files = val.files;
+            }
+
+        });
+    },
+    methods: {}
 }
 </script>
 

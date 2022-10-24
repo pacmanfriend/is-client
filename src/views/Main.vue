@@ -1,12 +1,9 @@
 <template>
-    <div>
-        <Dropdown placeholder=""/>
-    </div>
-    <div>
-        <Dropdown placeholder="Выбери файл"/>
-    </div>
-    <div>
-        <Dropdown placeholder="Выбери лабу"/>
+    <h1 class="m-2">Информационная безопасность</h1>
+    <div class="flex justify-content-start m-2">
+        <h2>Загрузка файла</h2>
+        <FileUpload v-model="file" :custom-upload="true" @select="selectFile" class="m-1" mode="basic" accept=".txt"/>
+        <Button class="m-1" label="Upload" @click="upload"/>
     </div>
 </template>
 
@@ -16,7 +13,19 @@ import {UploadFile} from "@/api/common-api";
 export default {
     name: "Main",
     data() {
-        return {}
+        return {
+            file: null,
+        }
+    },
+    methods: {
+        upload(event) {
+            UploadFile(this.file).then(val => {
+                console.log(val);
+            });
+        },
+        selectFile(event) {
+            this.file = event.files[0];
+        }
     }
 }
 </script>
