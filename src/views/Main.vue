@@ -5,6 +5,7 @@
         <FileUpload v-model="file" :custom-upload="true" @select="selectFile" class="m-1" mode="basic" accept=".txt"/>
         <Button class="m-1" label="Upload" @click="upload"/>
     </div>
+    <Toast position="bottom-right"/>
 </template>
 
 <script>
@@ -20,7 +21,14 @@ export default {
     methods: {
         upload(event) {
             UploadFile(this.file).then(val => {
-                console.log(val);
+                if (val.status === 200) {
+                    this.$toast.add({
+                        severity: 'success',
+                        summary: 'Успешно!',
+                        detail: 'Файл загружен успешно!',
+                        life: 3000
+                    });
+                }
             });
         },
         selectFile(event) {

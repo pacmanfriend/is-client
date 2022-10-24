@@ -2,11 +2,14 @@
     <h1>LAB 1</h1>
     <div>
         <Dropdown placeholder="Выберите файл" v-model="selectedFile" :options="files" option-label="FileName"
-                  option-value="FileName"/>
+                  option-value="FileName" @change="selectFile"/>
     </div>
     <div>
         <Textarea v-model="rawText" :disabled="true" :autoResize="true" rows="10" cols="50"/>
         <Textarea v-model="formatText" :disabled="true" :autoResize="true" rows="10" cols="50"/>
+        <div>
+            {{ encodingType }}
+        </div>
         <div>
             <DataTable class="p-datatable-sm" :value="chars" responsive-layout="scroll" :paginator="true" :rows="10"
                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords}">
@@ -18,7 +21,7 @@
 </template>
 
 <script>
-import {UploadFile} from "@/api/lab1-api";
+import {GetEncoding} from "@/api/lab1-api";
 import {GetFiles} from "@/api/common-api";
 
 export default {
@@ -28,6 +31,7 @@ export default {
             files: [],
             rawText: "",
             formatText: "",
+            encodingType: "",
             chars: [],
             columns: null
         }
@@ -45,7 +49,16 @@ export default {
 
         });
     },
-    methods: {}
+    methods: {
+        selectFile(event) {
+            GetEncoding(this.selectedFile).then(res => {
+                this.rawText = res.data.rawText;
+                this.encodingType = res.data.encodingType;
+                this.formatText = res.data.formatText;
+                this.chars = res.data.chars;
+            });
+        }
+    }
 }
 </script>
 

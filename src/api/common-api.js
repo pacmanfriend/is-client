@@ -9,7 +9,12 @@ async function UploadFile(file) {
         body: formData,
     });
 
-    return await response.json();
+    let data = await response.json();
+
+    return {
+        data:data,
+        status: response.status
+    };
 }
 
 async function GetFiles() {

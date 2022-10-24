@@ -1,6 +1,7 @@
 import {createApp} from 'vue';
 import {createPinia} from 'pinia';
 import PrimeVue from "primevue/config";
+import ToastService from 'primevue/toastservice';
 
 import App from './App.vue';
 import router from './router';
@@ -17,6 +18,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Row from "primevue/row";
 import Dropdown from 'primevue/dropdown';
+import Toast from 'primevue/toast';
 
 const app = createApp(App);
 app.component("FileUpload", FileUpload);
@@ -26,9 +28,11 @@ app.component("DataTable", DataTable);
 app.component("Column", Column);
 app.component("Row", Row);
 app.component("Dropdown", Dropdown);
+app.component("Toast",Toast);
 
 app.use(createPinia());
 app.use(PrimeVue);
+app.use(ToastService);
 app.use(router);
 
 app.mount('#app');
