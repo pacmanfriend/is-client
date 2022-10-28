@@ -12,17 +12,25 @@ async function UploadFile(file) {
     let data = await response.json();
 
     return {
-        data:data,
+        data: data,
         status: response.status
     };
 }
 
 async function GetFiles() {
     let response = await fetch(config.base_url + "/api/get-files", {
-        method: "get",
+        method: "GET",
     });
 
     return await response.json()
 }
 
-export {UploadFile, GetFiles}
+async function GetResultFiles() {
+    let response = await fetch(config.base_url + "/api/get-result-files", {
+        method: "GET"
+    });
+
+    return await response.json()
+}
+
+export {UploadFile, GetFiles, GetResultFiles}

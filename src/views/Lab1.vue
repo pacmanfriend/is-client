@@ -22,7 +22,7 @@
 
 <script>
 import {GetEncoding} from "@/api/lab1-api";
-import {GetFiles} from "@/api/common-api";
+import {GetFiles, GetResultFiles} from "@/api/common-api";
 
 export default {
     data() {
@@ -46,7 +46,6 @@ export default {
             if (val.error == null) {
                 this.files = val.files;
             }
-
         });
     },
     methods: {
@@ -57,7 +56,7 @@ export default {
                 this.formatText = res.data.formatText;
                 this.chars = res.data.chars;
             });
-        }
+        },
     }
 }
 </script>
