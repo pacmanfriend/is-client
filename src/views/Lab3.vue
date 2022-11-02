@@ -74,6 +74,7 @@ export default {
         selectFile() {
             ArithmeticEncoding(this.selectedFile).then(val => {
                 let res = val.data;
+
                 this.result = res.result;
                 this.text = res.text;
                 this.bites = res.bites;

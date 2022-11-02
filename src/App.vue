@@ -4,6 +4,8 @@
         <RouterLink class="link-btn" to="/lab1">LAB 1</RouterLink>
         <RouterLink class="link-btn" to="/lab2">LAB 2</RouterLink>
         <RouterLink class="link-btn" to="/lab3">LAB 3</RouterLink>
+        <RouterLink class="link-btn" to="/lab4">LAB 4</RouterLink>
+        <RouterLink class="link-btn" to="/lab5">LAB 5</RouterLink>
     </div>
     <div class="body">
         <RouterView/>

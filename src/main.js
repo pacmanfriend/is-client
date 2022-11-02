@@ -19,6 +19,7 @@ import Column from "primevue/column";
 import Row from "primevue/row";
 import Dropdown from 'primevue/dropdown';
 import Toast from 'primevue/toast';
+import SelectButton from "primevue/selectbutton";
 
 const app = createApp(App);
 app.component("FileUpload", FileUpload);
@@ -28,7 +29,8 @@ app.component("DataTable", DataTable);
 app.component("Column", Column);
 app.component("Row", Row);
 app.component("Dropdown", Dropdown);
-app.component("Toast",Toast);
+app.component("Toast", Toast);
+app.component("SelectButton", SelectButton)
 
 app.use(createPinia());
 app.use(PrimeVue);
