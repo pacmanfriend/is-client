@@ -7,6 +7,7 @@ import Lab3 from "@/views/Lab3.vue";
 import Lab4 from "@/views/Lab4.vue";
 import Lab5 from "@/views/Lab5.vue";
 import Lab6 from "@/views/Lab6.vue";
+import Lab7 from "@/views/Lab7.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,10 @@ const router = createRouter({
         {
             path: "/lab6",
             component: Lab6
+        },
+        {
+            path: "/lab7",
+            component: Lab7
         }
     ]
 })
