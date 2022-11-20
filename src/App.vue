@@ -8,6 +8,7 @@
         <RouterLink class="link-btn" to="/lab5">LAB 5</RouterLink>
         <RouterLink class="link-btn" to="/lab6">LAB 6</RouterLink>
         <RouterLink class="link-btn" to="/lab7">LAB 7</RouterLink>
+        <RouterLink class="link-btn" to="/lab8">LAB 8</RouterLink>
     </div>
     <div class="body">
         <RouterView/>
