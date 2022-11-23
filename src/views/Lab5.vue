@@ -10,6 +10,12 @@
         <Textarea v-model="text" :disabled="true" :autoResize="true" rows="10" cols="50"/>
         <Textarea v-model="result_text" :disabled="true" :autoResize="true" rows="10" cols="50"/>
     </div>
+    <div>
+        <span>{{ rowKey }}</span>
+    </div>
+    <div>
+        <span>{{ colKey }}</span>
+    </div>
 </template>
 
 <script>
@@ -26,6 +32,8 @@ export default {
             files: [],
             selectedOption: null,
             options: [],
+            rowKey: "",
+            colKey: ""
         }
     },
     created() {
@@ -47,6 +55,8 @@ export default {
 
                 this.text = res.text;
                 this.result_text = res.result;
+                this.rowKey = res.row_key;
+                this.colKey = res.col_key;
             });
         },
         changeSelectOptions(event) {
