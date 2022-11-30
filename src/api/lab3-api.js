@@ -1,7 +1,7 @@
 import {config} from "@/config";
 
-async function ArithmeticEncoding(fileName) {
-    let response = await fetch(config.base_url + "/lab3/get-arithmetic-encoding?file_name=" + fileName, {
+async function ArithmeticEncoding(fileName, option) {
+    let response = await fetch(config.base_url + "/lab3/get-arithmetic-encoding?file_name=" + fileName + "&is_encoding=" + option, {
         method: "GET"
     });
 

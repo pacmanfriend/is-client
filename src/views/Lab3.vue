@@ -1,11 +1,14 @@
 <template>
     <h1>LAB3</h1>
     <div>
+        <!--        <SelectButton v-model="selectedOption" :options="options" optionLabel="label" @change="changeSelectOptions"-->
+        <!--                      aria-labelledby="single"/>-->
         <Dropdown placeholder="Выберите файл" v-model="selectedFile" :options="files" option-label="FileName"
                   option-value="FileName" @change="selectFile"/>
     </div>
     <div>
         <Textarea v-model="text" :disabled="true" :autoResize="true" rows="10" cols="50"/>
+        <Textarea v-model="resText" :disabled="true" :autoResize="true" rows="10" cols="50"/>
     </div>
     <div>
         <h3>Символы с кодировкой</h3>
@@ -24,10 +27,10 @@
         </DataTable>
     </div>
     <div>
-        {{ result }}
+        <span>Коды: </span> {{ result }}
     </div>
     <div>
-        {{ bites }}
+       <span>Степень сжатия: </span> {{ bites }}
     </div>
 </template>
 
@@ -47,7 +50,10 @@ export default {
             frequencyTableColumns: null,
             result: 0,
             bites: 0,
-            text: ""
+            text: "",
+            resText: "",
+            selectedOption: null,
+            options: []
         }
     },
     created() {
@@ -63,6 +69,10 @@ export default {
             {field: 'interval', header: 'Интервал'}
         ]
 
+        this.options = [
+            {option: true, label: "Закодировать текст"},
+            {option: false, label: "Раскодировать текст текст"}
+        ]
 
         GetFiles().then(val => {
             if (val.error == null) {
@@ -72,7 +82,7 @@ export default {
     },
     methods: {
         selectFile() {
-            ArithmeticEncoding(this.selectedFile).then(val => {
+            ArithmeticEncoding(this.selectedFile, true).then(val => {
                 let res = val.data;
 
                 this.result = res.result;
@@ -80,7 +90,11 @@ export default {
                 this.bites = res.bites;
                 this.chars = res.chars;
                 this.segments = res.segments;
+                this.resText = res.restext;
             });
+        },
+        changeSelectOptions(event) {
+            this.selectedOption = event.value;
         }
     }
 }
